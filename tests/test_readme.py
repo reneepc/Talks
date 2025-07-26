@@ -7,11 +7,15 @@ def test_readme_only_generates_readme_with_links(tmp_path: Path, write_talks_jso
 
     run(tmp_path, ["--readme-only", "--out-dir", out_dir])
 
-    readme = (tmp_path / "README.md").read_text(encoding="utf-8")
-    assert "Talks" in readme
+    readme_path = tmp_path / out_dir / "README.md"
+    content = readme_path.read_text(encoding="utf-8")
+
+    assert "Talks" in content
     for t in talks:
-        assert t["title"] in readme
-        assert pdf_path(out_dir, t["title"]).as_posix() in readme
+        assert t["title"] in content
+        assert pdf_path(out_dir, t["title"]).as_posix() in content
+
+    assert not (tmp_path / "README.md").exists()
 
 def test_empty_without_force_exits_and_no_readme(tmp_path: Path, write_talks_json, run):
     write_talks_json(tmp_path, [])

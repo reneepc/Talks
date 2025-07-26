@@ -61,6 +61,9 @@ def generate_readme_content(talks, pdf_base: str) -> str:
     return readme_content
 
 def write_readme_file(talks, out_dir: str, pdf_base: str) -> None:
+    out_dir_path = Path(out_dir)
+    out_dir_path.mkdir(parents=True, exist_ok=True)
+
     content = generate_readme_content(talks, pdf_base)
     Path(out_dir, "README.md").write_text(content, encoding="utf-8")
     print("README.md generated successfully")
