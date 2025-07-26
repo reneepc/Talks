@@ -33,8 +33,8 @@ def get_html_footer():
         '</p>\n'
     )
 
-def generate_talk_row(talk, pdf_dir) -> str:
-    pdf_href = (Path(pdf_dir) / f'{talk["title"]}.pdf').as_posix()
+def generate_talk_row(talk, pdf_base: str) -> str:
+    pdf_href = (Path(pdf_base) / f'{talk["title"]}.pdf').as_posix()
     return (
         "<tr>\n"
         f'<td><div style="text-align: center;">{html.escape(talk["title"])}</div></td>\n'
@@ -43,24 +43,24 @@ def generate_talk_row(talk, pdf_dir) -> str:
         "</tr>\n"
     )
 
-def generate_talks_table(talks, pdf_dir) -> str:
+def generate_talks_table(talks, pdf_base: str) -> str:
     if not talks:
         return (
             "<tr>\n"
             '<td colspan="3"><div style="text-align: center; opacity: 0.7;">'
-            f'No talks yet. Add them to the JSON config file (default path: "bootstrap/talks.json")'
+            'No talks yet. Add them to the JSON config file (default path: "bootstrap/talks.json")'
             "</div></td>\n"
             "</tr>\n"
         )
-    return "".join(generate_talk_row(p, pdf_dir) for p in talks)
+    return "".join(generate_talk_row(p, pdf_base) for p in talks)
 
-def generate_readme_content(talks, pdf_dir) -> str:
+def generate_readme_content(talks, pdf_base: str) -> str:
     readme_content = get_html_header()
-    readme_content += generate_talks_table(talks, pdf_dir)
+    readme_content += generate_talks_table(talks, pdf_base)
     readme_content += get_html_footer()
     return readme_content
 
-def write_readme_file(talks, pdf_dir) -> None:
-    content = generate_readme_content(talks, pdf_dir)
-    Path("README.md").write_text(content, encoding="utf-8")
+def write_readme_file(talks, out_dir: str, pdf_base: str) -> None:
+    content = generate_readme_content(talks, pdf_base)
+    Path(out_dir, "README.md").write_text(content, encoding="utf-8")
     print("README.md generated successfully")
