@@ -14,9 +14,9 @@
 </thead>
 <tbody>
 <tr>
-<td><div style="text-align: center;">Go Memory Internals</div></td>
+<td><div style="text-align: center;">Go Memory Allocation Internals</div></td>
 <td><div style="text-align: center;"><a href="https://docs.google.com/presentation/d/1Ls6_UFLPiJ8nOCVIZqL5DB8rsIYxrGREEsxmLzXk2qE/edit?usp=drive_link">View</a></div></td>
-<td><div style="text-align: center;"><a href="presentations/go-memory-internals.pdf">Download</a></div></td>
+<td><div style="text-align: center;"><a href="presentations/go-memory-allocation-internals.pdf">Download</a></div></td>
 </tr>
 <tr>
 <td><div style="text-align: center;">Anatomia de um Garbage Collector Moderno</div></td>
@@ -34,7 +34,7 @@
 <td><div style="text-align: center;"><a href="presentations/scylladb.pdf">Download</a></div></td>
 </tr>
 <tr>
-<td><div style="text-align: center;">O que são LLMs</div></td>
+<td><div style="text-align: center;">O que são LLMs?</div></td>
 <td><div style="text-align: center;"><a href="https://docs.google.com/presentation/d/1KX0lAk8ibHOzJGtxdx2uDF94BfdkNXMU/edit?usp=drive_link&amp;ouid=104876958915813469607&amp;rtpof=true&amp;sd=true">View</a></div></td>
 <td><div style="text-align: center;"><a href="presentations/o-que-sao-llms.pdf">Download</a></div></td>
 </tr>

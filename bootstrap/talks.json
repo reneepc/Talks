@@ -1,6 +1,6 @@
 [
   {
-    "title": "Go Memory Internals",
+    "title": "Go Memory Allocation Internals",
     "slides_link": "https://docs.google.com/presentation/d/1Ls6_UFLPiJ8nOCVIZqL5DB8rsIYxrGREEsxmLzXk2qE/edit?usp=drive_link"
   },
   {
@@ -16,7 +16,7 @@
     "slides_link": "https://docs.google.com/presentation/d/1feISqZj6sptxQR317lbglLVXK7iP5ZUK/edit?usp=drive_link"
   },
   {
-    "title": "O que são LLMs",
+    "title": "O que são LLMs?",
     "slides_link": "https://docs.google.com/presentation/d/1KX0lAk8ibHOzJGtxdx2uDF94BfdkNXMU/edit?usp=drive_link&ouid=104876958915813469607&rtpof=true&sd=true"
   },
   {
