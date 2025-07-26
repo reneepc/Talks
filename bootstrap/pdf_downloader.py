@@ -44,24 +44,32 @@ def fetch_pdf(url: str, out_path: Path, timeout: int = 60) -> bool:
 
     return True
 
-def download_pdf_files(talks: list):
+def should_download(pdf_path: Path, force: bool) -> bool:
+    if not pdf_path.exists():
+        return True
+    if force:
+        return True
+
+    return not is_pdf_file(pdf_path)
+
+
+def download_pdf_files(talks: list, out_dir: str = ".", force: bool = False):
     if not talks:
         print("No talks to download")
         return
 
-    for p in talks:
-        pdf_path = Path(f'{p["title"]}.pdf')
+    out_path = Path(out_dir)
+    out_path.mkdir(parents=True, exist_ok=True)
 
+    for p in talks:
+        pdf_path = out_path / f'{p["title"]}.pdf'
+
+        if not should_download(pdf_path, force):
+            print(f"Skipping '{pdf_path}' (already exists and is a valid PDF)")
+            continue
         if pdf_path.exists():
-            if is_pdf_file(pdf_path):
-                print(f"Skipping '{pdf_path}' (already exists and is a valid PDF)")
-                continue
-            else:
-                print(f"Removing corrupted '{pdf_path}' and retrying...")
-                try:
-                    pdf_path.unlink()
-                except FileNotFoundError:
-                    pass
+            print("Removing existing file:", pdf_path)
+            pdf_path.unlink(missing_ok=True)
 
         export_url = build_slides_export_pdf_url(p["slides_link"]) or p["slides_link"]
         print(f"Downloading '{p['title']}' to '{pdf_path}'...")

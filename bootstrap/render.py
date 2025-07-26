@@ -35,17 +35,17 @@ def get_html_footer():
         '</p>\n'
     )
 
-def generate_talk_row(p):
-    pdf_filename = f'{p["title"]}.pdf'
+def generate_talk_row(p, pdf_dir: str = "."):
+    pdf_href = (Path(pdf_dir) / f'{p["title"]}.pdf').as_posix()
     return (
         "<tr>\n"
         f'<td><div style="text-align: center;">{html.escape(p["title"])}</div></td>\n'
         f'<td><div style="text-align: center;"><a href="{p["slides_link"]}">View</a></div></td>\n'
-        f'<td><div style="text-align: center;"><a href="{pdf_filename}">Download</a></div></td>\n'
+        f'<td><div style="text-align: center;"><a href="{pdf_href}">Download</a></div></td>\n'
         "</tr>\n"
     )
 
-def generate_talks_table(talks):
+def generate_talks_table(talks, pdf_dir: str = "."):
     if not talks:
         return (
             "<tr>\n"
@@ -54,15 +54,15 @@ def generate_talks_table(talks):
             "</div></td>\n"
             "</tr>\n"
         )
-    return "".join(generate_talk_row(p) for p in talks)
+    return "".join(generate_talk_row(p, pdf_dir) for p in talks)
 
-def generate_readme_content(talks):
+def generate_readme_content(talks, pdf_dir: str = "."):
     readme_content = get_html_header()
-    readme_content += generate_talks_table(talks)
+    readme_content += generate_talks_table(talks, pdf_dir)
     readme_content += get_html_footer()
     return readme_content
 
-def write_readme_file(talks):
-    content = generate_readme_content(talks)
+def write_readme_file(talks, pdf_dir: str = "."):
+    content = generate_readme_content(talks, pdf_dir)
     Path("README.md").write_text(content, encoding="utf-8")
     print("README.md generated successfully")
