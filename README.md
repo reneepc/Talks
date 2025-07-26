@@ -1,8 +1,8 @@
 <div align="center">
-  <h1>My Talks</h1>
+  <h1>Talks</h1>
 </div>
 
-<p align="center">Here is a collection of my presentations.</p>
+<p align="center">Here is a collection of my public presentations</p>
 
 <table align="center">
   <thead>
@@ -58,7 +58,6 @@
   </tbody>
 </table>
 
-</br>
 </br>
 
 <hr>
