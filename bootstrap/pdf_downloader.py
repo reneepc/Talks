@@ -5,6 +5,7 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict
+from .naming import pdf_filename
 from .config import DEFAULT_REQUEST_TIMEOUT
 
 def build_slides_export_pdf_url(slides_link: str) -> str | None:
@@ -68,7 +69,7 @@ def _submit_downloads(executor: ThreadPoolExecutor, talks: list, out_path: Path,
     for talk in talks:
         title = talk["title"]
         link = talk["slides_link"]
-        pdf_path = out_path / f"{title}.pdf"
+        pdf_path = out_path / pdf_filename(title)
 
         if not should_download(pdf_path, force):
             print(f"Skipping '{pdf_path}' (already exists and is a valid PDF)")

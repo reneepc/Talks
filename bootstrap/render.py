@@ -1,5 +1,6 @@
 from pathlib import Path
 import html
+from .naming import pdf_filename
 from .config import DRIVE_FOLDER_LINK
 
 def get_html_header():
@@ -34,7 +35,7 @@ def get_html_footer():
     )
 
 def generate_talk_row(talk, pdf_base: str) -> str:
-    pdf_href = (Path(pdf_base) / f'{talk["title"]}.pdf').as_posix()
+    pdf_href = (Path(pdf_base) / pdf_filename(talk["title"])).as_posix()
     return (
         "<tr>\n"
         f'<td><div style="text-align: center;">{html.escape(talk["title"])}</div></td>\n'
