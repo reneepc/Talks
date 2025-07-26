@@ -12,6 +12,9 @@ def parse_args():
 
     parser.add_argument('--force', action='store_true',
                         help="Force actions: generate README even if empty; re-download/overwrite existing PDFs")
+    
+    parser.add_argument('--workers', type=int, default=10, help="Number of worker threads for downloading PDFs (default: 10)")
+
 
     args = parser.parse_args()
     return args

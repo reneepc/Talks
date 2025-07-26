@@ -19,7 +19,7 @@ if __name__ == "__main__":
     if args.readme_only:
         write_readme_file(talks, pdf_dir=args.out_dir)
     elif args.download_only:
-        download_pdf_files(talks, out_dir=args.out_dir, force=args.force)
+        download_pdf_files(talks, out_dir=args.out_dir, force=args.force, workers=args.workers)
     else:
         write_readme_file(talks, pdf_dir=args.out_dir)
-        download_pdf_files(talks, out_dir=args.out_dir, force=args.force)
+        download_pdf_files(talks, out_dir=args.out_dir, force=args.force, workers=args.workers)
