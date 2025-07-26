@@ -1,9 +1,7 @@
 from pathlib import Path
 import html
+from .config import DRIVE_FOLDER_LINK
 
-DRIVE_FOLDER_LINK = "https://drive.google.com/drive/folders/1R5AOlsUbHGUyDaicyGxKRz03GFLzqg_a?usp=drive_link"
-
-# Flush-left tags so Markdown doesn’t turn them into a code block
 def get_html_header():
     return (
         '<div align="center">\n'
