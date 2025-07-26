@@ -4,7 +4,7 @@ from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
-def build_slides_export_pdf_url(slides_link: str):
+def build_slides_export_pdf_url(slides_link: str) -> str | None:
     try:
         parsed = urlparse(slides_link)
         if parsed.netloc.endswith("docs.google.com") and "/presentation/d/" in parsed.path:
@@ -44,12 +44,12 @@ def fetch_pdf(url: str, out_path: Path, timeout: int = 60) -> bool:
 
     return True
 
-def download_pdfs(presentations):
-    if not presentations:
+def download_pdf_files(talks: list):
+    if not talks:
         print("No talks to download")
         return
 
-    for p in presentations:
+    for p in talks:
         pdf_path = Path(f'{p["title"]}.pdf')
 
         if pdf_path.exists():
