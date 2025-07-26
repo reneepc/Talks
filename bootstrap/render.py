@@ -40,7 +40,7 @@ def generate_talk_row(p, pdf_dir: str = "."):
     return (
         "<tr>\n"
         f'<td><div style="text-align: center;">{html.escape(p["title"])}</div></td>\n'
-        f'<td><div style="text-align: center;"><a href="{p["slides_link"]}">View</a></div></td>\n'
+        f'<td><div style="text-align: center;"><a href="{html.escape(p["slides_link"], quote=True)}">View</a></div></td>\n'
         f'<td><div style="text-align: center;"><a href="{pdf_href}">Download</a></div></td>\n'
         "</tr>\n"
     )
