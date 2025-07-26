@@ -1,5 +1,5 @@
 DEFAULT_JSON = "bootstrap/talks.json"
-DEFAULT_OUT_DIR = "."
+DEFAULT_OUT_DIR = "presentations"
 
 DEFAULT_N_WORKERS = 10
 DEFAULT_REQUEST_TIMEOUT = 60
