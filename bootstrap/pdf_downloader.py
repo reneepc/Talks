@@ -5,7 +5,7 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict
-from .config import REQUEST_TIMEOUT
+from .config import DEFAULT_REQUEST_TIMEOUT
 
 def build_slides_export_pdf_url(slides_link: str) -> str | None:
     try:
@@ -26,7 +26,7 @@ def is_pdf_file(path: Path) -> bool:
     except OSError:
         return False
 
-def fetch_pdf(url: str, out_path: Path, timeout: int = REQUEST_TIMEOUT) -> bool:
+def fetch_pdf(url: str, out_path: Path, timeout: int = DEFAULT_REQUEST_TIMEOUT) -> bool:
     req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
     try:
         with urlopen(req, timeout=timeout) as resp:
